@@ -1,0 +1,138 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+#show_5{
+    margin: 0;
+    padding: 0;
+}
+
+#show_5 .row{
+    margin: 0;
+    padding: 0;
+}
+
+#show_5 .phone_show>div:nth-of-type(2){
+    display: flex;
+    /*flex-wrap: wrap;*/
+    align-items: center;
+}
+
+#show_5 .phone_show>div:nth-of-type(2)>*{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+#show_title_buyer>div>*{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.tab-pane__>div>div>*{
+    margin: 0;
+    padding: 0;
+}
+
+.tab-pane__{
+    padding: 0 15px;
+}
+
+#disabled-tab-pane>div>div:nth-of-type(1)>div{
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    padding: 10px 15px;
+}
+#disabled-tab-pane>div>div:nth-of-type(2){
+    border-radius: 8px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    /*padding: 10px 15px;*/
+    /*background-color: #ff6700;*/
+    /*height: 450px;!*高度*!*/
+    height: 80vh;
+}
+
+#disabled-tab-pane>div{
+    display: flex;
+}
+
+.row{
+    --bs-gutter-x: 0rem;
+}
+
+.card-ctrl {
+    display: flex;
+    justify-content: space-around
+}
+
+.card-ctrl .shar-btn {
+    background: url(https://m.mi.com//static/img/m_b_share.ac01313399.png) no-repeat center;
+    background-size: contain
+}
+
+.card-ctrl .send-btn {
+    background: url(https://m.mi.com//static/img/m_b_msg.1f9f89973f.png) no-repeat center;
+    background-size: contain;
+    position: relative
+}
+
+.card-ctrl .praise-btn {
+    background: url(https://m.mi.com/static/img/m_b_praise_a.b483bc60a9.png) no-repeat center;
+    background-size: contain;
+    position: relative
+}
+
+.card-ctrl .praise-btn.active {
+    background: url(https://m.mi.com//static/img/m_b_praise_b.d0c44e6cc8.png) no-repeat center;
+    background-size: contain
+}
+
+.card-ctrl .praise-btn.active .num {
+    color: #ff5528!important
+}
+
+.card-ctrl .num {
+    position: absolute;
+    left: calc(100% + .03rem);
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: DIN-Medium, DIN, serif;
+    font-weight: 500;
+    color: #757575
+}
+
+.card-ctrl{
+    height: 50px;
+}
+
+.card-ctrl>a{
+    width: 25px;
+    /*width: ;*/
+}
+.card-ctrl>a>span{
+    font-size: 15px;
+}
+
+.pagination{
+    margin-bottom: 0;
+    justify-content: center;
+}
+
+#example::-webkit-scrollbar {
+    display: none;
+}
+
+/* 隐藏 IE、Edge 和 Firefox 的滚动条 */
+.example {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+@media (max-width: 767px) {
+    #example{
+        padding: 15px;
+    }
+}

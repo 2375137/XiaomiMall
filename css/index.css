@@ -1,0 +1,23 @@
+*{
+    margin: 0;
+    padding: 0;
+    user-select: none;
+}
+
+#image-container img{
+    width: 100%;
+    margin: 5px 0;
+}
+#image-container{
+    font-size: 0;
+}
+
+.row{
+    --bs-gutter-x: 0
+}
+
+#kdocs_web_cut_iframe_box{
+    margin: 0;
+    padding: 0;
+}
+

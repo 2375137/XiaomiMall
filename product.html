@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.cnbj1.fds.api.mi-img.com/mi.com-assets/shop/img/logo-mi2.png" rel="icon">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="js/bootstrap.bundle.js"></script>
+    <meta content="width=device-width, initial-scale=1, user-scalable=no" name="viewport">
+    <link href="css/product.css" rel="stylesheet">
+    <link href="css/show.css" rel="stylesheet">
+    <!--    <link href="css/show.css">-->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            user-select: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+        @media (max-width: 768px) {
+            #pills-tab{
+                display: block;
+            }
+
+            .nav-item{
+                display: flex;
+                justify-content: center;
+            }
+            #navbarSupportedContent{
+                flex-wrap: wrap;
+            }
+            #navbarSupportedContent>*{
+                width: 100%;
+            }
+
+        }
+
+        .nav-item .nav-link {
+            display: block;
+            /*box-sizing: border-box;*/
+            padding: 2px 10px;
+            margin: 2px;
+            border-radius: 3px;
+        }
+
+        .nav-item .nav-link:hover {
+            background-color: rgba(128, 128, 128, 0.2);
+        }
+
+        .nav-item .nav-link:hover span {
+            color: #ff6900
+        }
+
+        .nav-item span {
+            margin: 2px 5px;
+        }
+
+        .user {
+            justify-content: center;
+            align-items: center;
+        }
+
+        .user > * {
+            display: flex;
+            align-items: center;
+            margin: 0;
+        }
+
+        .user > span {
+            margin: 0 5px;
+        }
+
+        .user .btn {
+            margin: 0;
+            padding: 2px 8px;
+        }
+
+        /*#exampleModal .form-control {*/
+        /*    margin-left: 5px;*/
+        /*    padding: 0 5px;*/
+        /*}*/
+
+        #exampleModal .modal-body {
+            margin: 10px 0;
+        }
+
+        #exampleModal .modal-body > div {
+            margin: 10px 0;
+        }
+
+        .show {
+            display: flex;
+        }
+
+        #show_ .carousel-indicators > button {
+            background-color: rgba(128, 128, 128, 0.6);
+        }
+
+        .carousel-control-next-icon {
+            background-color: rgba(128, 128, 128, 0.6);
+            border-radius: 8px;
+        }
+
+        .carousel-control-prev-icon {
+            background-color: rgba(128, 128, 128, 0.6);
+            border-radius: 8px;
+        }
+
+        .carousel-control-prev {
+            justify-content: flex-start;
+        }
+
+        .carousel-control-next {
+            justify-content: flex-end;
+        }
+    </style>
+</head>
+<body>
+<div id="liveAlertPlaceholder" style="position: fixed;right: 3%;top: 0;margin: 15px;z-index: 9999"></div>
+<!-- 这个是登录用的 -->
+<div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="exampleModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered" style="align-items: center;display: flex">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">登录对话框</h1>
+                <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+            </div>
+            <div class="modal-body" id="login_in_body" style="text-align: center">
+
+            </div>
+            <div class="modal-footer" id="login_in_footer">
+            </div>
+        </div>
+    </div>
+</div>
+<nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top blur-effect" id="nav_">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="./index.html">
+            <img alt="" src="https://cdn.cnbj1.fds.api.mi-img.com/mi.com-assets/shop/img/logo-mi2.png"
+                 style="height: 38px"></a>
+        <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+                class="navbar-toggler"
+                data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse" type="button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="nav nav-pills me-auto mb-2 mb-lg-0" id="pills-tab">
+                <li class="nav-item">
+                    <a class="nav-link" href="#" id="index"><span>小米官网</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><span>小米商城</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><span>小米澎湃OS</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><span>IOT</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><span>小米小爱开放平台</span></a>
+                </li>
+
+            </ul>
+            <div class="d-flex user">
+                <span>
+                    <button class="btn btn-primary" data-bs-target="#exampleModal" data-bs-toggle="modal"
+                            onclick="check_login()"
+                            type="button">
+                    登录
+                    </button>
+                </span>
+                |
+                <span>
+                    <button class="btn btn-primary" data-bs-target="#exampleModal" data-bs-toggle="modal"
+                            onclick="check_sign()"
+                            type="button">
+                    注册
+                    </button>
+                </span>
+            </div>
+        </div>
+    </div>
+</nav>
+<div id="navbar_1" style="margin-top: 64px">
+    <div class="site-header"
+         style="border-bottom: 1px solid rgba(128,128,128,0.4);display: flex;align-items: center;justify-content: space-around">
+        <div class="header-nav">
+            <ul id="header-nav">
+                <li>
+                    <span>Xiaomi手机</span>
+                    <div class="show___">
+                        <ul id="xiaomi" style="display: flex;padding: 0;align-items: center;justify-content: center">
+
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <span>Redmi手机</span>
+                    <div class="show___">
+                        <ul id="redmi" style="display: flex;padding: 0;align-items: center;justify-content: center">
+
+                        </ul>
+                    </div>
+                </li>
+                <li><span>笔记本</span>
+                    <div class="show___">
+                        <ul id="pc" style="display: flex;padding: 0;align-items: center;justify-content: center">
+
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="header-search" style="height: 50%;display: flex">
+            <input aria-label="Search" class="form-control me-2" placeholder="Search" type="search">
+            <button class="btn btn-primary" type="submit">Search</button>
+        </div>
+    </div>
+</div>
+<!--上面代码是固定的-->
+
+<!--这里加入标签选项卡-->
+<div id="navbar_"
+     style="display: flex;align-items: center;justify-content: center;height: 50px;box-shadow: 0 3px 4px rgba(0, 0, 0, .18);;background-color: white;opacity: 1">
+    <div style="width: 80%;display: flex;align-items: center;justify-content: space-between">
+        <div>
+            <span id="shop_title_3">商品标题</span>
+        </div>
+        <ul class="nav nav-pills" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button aria-controls="home-tab-pane" aria-selected="true" class="nav-link active" data-bs-target="#home-tab-pane"
+                        data-bs-toggle="tab" id="home-tab" role="tab" type="button">商品页
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button aria-controls="profile-tab-pane" aria-selected="false" class="nav-link" data-bs-target="#profile-tab-pane"
+                        data-bs-toggle="tab" id="profile-tab" role="tab" type="button">商品介绍
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button aria-controls="contact-tab-pane" aria-selected="false" class="nav-link" data-bs-target="#contact-tab-pane"
+                        data-bs-toggle="tab" id="contact-tab" role="tab" type="button">参数介绍
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button aria-controls="disabled-tab-pane" aria-selected="false" class="nav-link" data-bs-target="#disabled-tab-pane"
+                        data-bs-toggle="tab" id="disabled-tab" role="tab" type="button">用户评价
+                </button>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<div class="tab-content" id="myTabContent" style="margin-top: 5px">
+    <!--商品页-->
+    <div aria-labelledby="home-tab" class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" tabindex="0">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-xs-12 col-sm-12" style="padding: 45px;box-sizing: border-box">
+                    <!--这个是商品展示页的轮播图-->
+                    <div class="carousel slide" data-bs-interval="2000" data-bs-ride="carousel" id="show_"
+                         style="border-radius: 8px;overflow: hidden">
+                        <div class="carousel-indicators" id=show_1>
+
+                        </div>
+                        <div class="carousel-inner" id="show_2">
+
+                        </div>
+                        <button class="carousel-control-prev" data-bs-slide="prev" data-bs-target="#show_"
+                                type="button">
+                            <span aria-hidden="true" class="carousel-control-prev-icon"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" data-bs-slide="next" data-bs-target="#show_"
+                                type="button">
+                            <span aria-hidden="true" class="carousel-control-next-icon"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xs-12 col-sm-12" id="content">
+                    <div style="border-bottom:1px solid rgba(128,128,128,0.4);margin-top: 40px">
+                        <h4 id="shop_title">这个是标题</h4>
+                        <p class="sale-desc" id="shop_desc"></p>
+                        <p style="color: #ff6700;font-size: 13px;padding: 5px">小米自营</p>
+                        <p id="shop_price" style="padding: 5px">价格</p>
+                    </div>
+                    <div style="border:1px solid rgba(128,128,128,0.4);background-color: rgba(128,128,128,0.1);margin: 15px 0;height: 80px;display: flex;align-items: center">
+                        <nav aria-label="breadcrumb" style="display: flex;padding: 0 20px">
+                            <ol class="breadcrumb" style="margin-bottom: 0">
+                                <li class="breadcrumb-item"><a href="#">中国</a></li>
+                                <li class="breadcrumb-item"><a href="#">山东</a></li>
+                                <li class="breadcrumb-item"><a href="#">青岛</a></li>
+                                <li class="breadcrumb-item"><a href="#">黄岛区</a></li>
+                                <li aria-current="page" class="breadcrumb-item active">青岛港湾职业技术学院</li>
+                            </ol>
+                            <!-- 修改地址的按钮 -->
+                            <span data-bs-target="#Modal" data-bs-toggle="modal" style="margin: 0 10px;color:#ff4a00"
+                                  type="button">
+                            修改地址
+                        </span>
+
+                            <!-- 修改地址相关的内容 -->
+                            <div aria-hidden="true" aria-labelledby="ModalLabel" class="modal fade" id="Modal"
+                                 tabindex="-1">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="ModalLabel">修改地址</h1>
+                                            <button aria-label="Close" class="btn-close" data-bs-dismiss="modal"
+                                                    type="button"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            这一部分是写修改地址相关的
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">取消
+                                            </button>
+                                            <button class="btn btn-primary" data-bs-dismiss="modal" type="button">保存
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+
+                    <div>
+                        <div class="card">
+                            <h5 class="card-header"
+                                style="font: 14px/1.5 Helvetica Neue,Helvetica,Arial,Microsoft Yahei,Hiragino Sans GB,Heiti SC,WenQuanYi Micro Hei;">
+                                选择小米提供的尊享换新计划</h5>
+                            <div class="card-body service-item-box">
+                                <ul data-v-3da63f71="" style="margin: 0;padding: 0;width: 100%;display: block">
+                                    <li class="" data-v-3da63f71="" id="gou_box" onclick="
+                            if(document.getElementById('gou').checked){
+                                document.getElementById('gou_box').style.border = '1px solid #e0e0e0'
+                                document.getElementById('h3').style.color = 'black'
+                                /*判断点击区域是不是checkbox*/
+                                if(event.target.tagName === 'INPUT' && event.target.type === 'checkbox'){
+                                    console.log('用户点击复选框')
+                                    if(document.getElementById('gou').checked){
+                                        document.getElementById('gou_box').style.border = '1px solid #ff6700'
+                                        document.getElementById('h3').style.color = '#ff6700'
+                                    }else{
+                                        document.getElementById('gou_box').style.border = '1px solid #e0e0e0'
+                                        document.getElementById('h3').style.color = 'black'
+                                    }
+
+                                }else{
+                                    document.getElementById('gou').checked = false
+                                    if(document.getElementById('gou').checked){
+                                        document.getElementById('gou_box').style.border = '1px solid #ff6700';
+                                        document.getElementById('h3').style.color = '#ff6700'
+
+                                    }else{
+                                        document.getElementById('gou_box').style.border = '1px solid #e0e0e0'
+                                        document.getElementById('h3').style.color = 'black'
+                                    }
+                                }
+
+                            }
+                            else{
+                                document.getElementById('gou_box').style.border = '1px solid #ff6700';
+                                document.getElementById('h3').style.color = '#ff6700'
+                                if(event.target.tagName === 'INPUT' && event.target.type === 'checkbox'){
+                                    console.log('用户点击复选框')
+                                    if(document.getElementById('gou').checked){
+                                        document.getElementById('gou_box').style.border = '1px solid #ff6700';
+                                        document.getElementById('h3').style.color = '#ff6700'
+                                    }else{
+                                        document.getElementById('gou_box').style.border = '1px solid #e0e0e0'
+                                        document.getElementById('h3').style.color = 'black'
+
+                                    }
+                                }else{
+                                    document.getElementById('gou').checked = true
+                                }
+
+                            }
+                            ">
+                                        <i class="iconfont icon-checkbox" data-v-3da63f71="">
+                                            <label>
+                                                <input id="gou" type="checkbox"/>
+                                            </label>
+                                        </i>
+                                        <img alt=""
+                                             data-src="//cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1698062098.24811169.png"
+                                             data-v-3da63f71=""
+                                             lazy="loaded"
+                                             src="//cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1698062098.24811169.png">
+                                        <div class="box" data-v-3da63f71="">
+                                            <h3 data-v-3da63f71="" id="h3">
+                                                保值换新服务
+                                                <em data-v-3da63f71="">
+                                                    已省139元
+                                                </em>
+                                            </h3>
+                                            <div class="desc" data-v-3da63f71="">
+                                                <span id="shop_name_1"></span> 保值换新服务
+                                            </div>
+                                            <div class="agreement-box" data-v-3da63f71="">
+                                                购买前请阅读
+                                                <a data-v-3da63f71=""
+                                                   href="https://www.mi.com/article/detail/637b5886162f.html"
+                                                   target="_blank">
+                                                    服务条款
+                                                    <span data-v-3da63f71="">|</span>
+                                                </a>
+                                                <a data-v-3da63f71=""
+                                                   href="https://www.mi.com/article/detail/2eef8fde9917.html"
+                                                   target="_blank">
+                                                    常见问题<!---->
+                                                </a>
+                                            </div>
+                                            <div class="price" data-v-3da63f71="">29.9元</div>
+                                        </div>
+
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 15px">
+                        <div class="selected-list" data-v-70283663="" data-v-acfb37e4="">
+                            <ul data-v-acfb37e4="">
+                                <li data-v-acfb37e4=""><span id="shop_name_2"></span><span data-v-acfb37e4=""
+                                                                                           id="shop_price_3"></span>
+                                </li>
+                            </ul>
+                            <div class="total-price" data-v-acfb37e4="">总计：<span id="shop_price_4"></span>元</div>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 15px">
+                        <div class="btn-box" data-v-70283663="">
+                            <div class="sale-btn" data-v-381dda6a="" data-v-70283663="">
+                                <a class="btn btn-primary" data-params="&quot;&quot;"
+                                   data-spm="product_19288.add_cart.1"
+                                   data-v-381dda6a="" href="javascript:void(0);"
+                                   style="border-radius: 0;">加入购物车</a>
+                            </div>
+                            <div class="favorite-btn" data-v-5d5a0502="" data-v-70283663="">
+                                <a class="btn-gray btn-like" data-params="&quot;&quot;" data-spm="product_19288.favor.1"
+                                   data-v-5d5a0502="">
+                                    <i class="iconfont default" data-v-5d5a0502=""></i>
+                                    喜欢
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="after-sale-info" data-v-6d9966ee="" data-v-70283663=""
+                             style="font-size: 13px;margin-top: 15px">
+                    <span data-v-6d9966ee="">
+                        <a class="support" data-v-6d9966ee="" href="javascript:void(0);">
+                            <i class="iconfont" data-v-6d9966ee=""></i>
+                            <em data-v-6d9966ee="">小米自营</em>
+                        </a>
+                    </span>
+                            <span data-v-6d9966ee="">
+                        <a class="support" data-v-6d9966ee="" href="javascript:void(0);" title="由小米发货">
+                            <i class="iconfont" data-v-6d9966ee=""></i>
+                            <em data-v-6d9966ee="">小米发货</em>
+                        </a>
+                    </span>
+                            <span data-v-6d9966ee="">
+                        <a class="support" data-v-6d9966ee="" href="javascript:void(0);">
+                            <i class="iconfont" data-v-6d9966ee=""></i>
+                            <em data-v-6d9966ee="">7天无理由退货（到店自取拆封后不支持）</em>
+                        </a>
+                    </span>
+                            <span data-v-6d9966ee="">
+                        <a class="support" data-v-6d9966ee="" href="javascript:void(0);"
+                           title="由小米发货商品(不含有品),单笔满69元免运费;由小米有品发货的商品,免运费;由第三方商家发货的商品，运费以实际结算金额为准;特殊商品需要单独收取运费,具体以实际结算金额为准;优惠券等不能抵扣运费金额;如需无理由退货,用户将承担该商品的退货物流费用;使用门店闪送服务，需单独支付运费，起送费10元起 ，根据配送距离有所不同，具体请以订单结算页面显示为准。">
+                            <i class="iconfont" data-v-6d9966ee=""></i>
+                            <em data-v-6d9966ee="">运费说明</em>
+                        </a>
+                    </span>
+                            <span data-v-6d9966ee="">
+                        <a class="support" data-v-6d9966ee="" href="javascript:void(0);"
+                           title="企业名称：小米通讯技术有限公司企业执照注册号：91110108558521630L企业地址：北京市海淀区西二旗中路33号院6 号楼9层019号企业电话：400-100-5678营业期限：2010年08月25日 至 2040年08月24日经营范围：开发手机技术、计算机软件及信息技术；技术检测、技术咨询、技术服务、技术转让；计算机技术培训；系统集成；货物进出口、技术进出口、代理进出口；家用电器、通信设备、广播电视设备（不含卫星电视广播、地面接收装置）、机械设备、电子产品、文化用品的批发零售；维修仪器仪表；销售医疗器械I类、II、III类、针纺织品（含家纺家饰）、服装鞋帽、日用杂货、工艺品、文化用品、体育用品、照相器材、卫生用品（含个人护理用品）、钟表眼镜、箱包、家具（不从事实体店铺经营）、小饰品、日用品、乐器、自行车、智能卡；计算机、通讯设备、家用电器、电子产品、机械设备的技术开发、技术服务；销售金银饰品（不含金银质地纪念币）；家用空调的委托生产；委托生产翻译机；销售翻译机、五金交电（不含电动自行车）、厨房用品、陶瓷制品、玻璃制品、玩具、汽车零配件、食用农产品、花卉、苗木、宠物用品、建筑材料、装饰材料、化妆品、珠宝首饰、通讯设备、卫生间用品、农药；生产手机（仅限在海淀区永捷北路2号三层生产及外埠生产）；出版物批发；出版物零售；销售食品。（销售第三类医疗器械以及销售食品以及依法须经批准的项目，经相关部门批准后依批准的内容开展经营活动。）">
+                            <i class="iconfont" data-v-6d9966ee=""></i>
+                            <em data-v-6d9966ee="">企业信息</em>
+                        </a>
+                    </span>
+                            <span data-v-6d9966ee="">
+                        <a class="support" data-v-6d9966ee=""
+                           href="https://s1.mi.com/m/faq/giving/index.html?project_id=44" target="_blank">
+                            <i class="iconfont" data-v-6d9966ee=""></i>
+                            <em data-v-6d9966ee="">7天价格保护</em>
+                        </a>
+                    </span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="show____">
+            <div class="container-fluid" style="background-color: rgb(245, 245, 245);padding: 15px 0 30px 0">
+                <div class="row" style="margin: 0">
+                    <div class="col-md-12" style="font-weight: 400;padding: 1em 0;">
+                        <h5 style="margin-bottom: 0;margin-left: 5%">价格说明</h5>
+                    </div>
+                    <div class="col-md-12" id="show__" style="padding: 0;text-align: center;">
+                        <img alt=""
+                             src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/43e2954feb6d1b108438481f1d5b0bd3.png" style="width: 90%;">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--商品介绍-->
+    <div aria-labelledby="profile-tab" class="tab-pane fade" id="profile-tab-pane" role="tabpanel" tabindex="0">
+        <div id="shop_show_1" style="font-size: 0;width: 70%;margin: 0 auto">
+
+        </div>
+    </div>
+    <!--参数介绍-->
+    <div aria-labelledby="contact-tab" class="tab-pane fade" id="contact-tab-pane" role="tabpanel" tabindex="0">
+        <div id="shop_show_2" style="font-size: 0;width: 70%;margin: 0 auto">
+
+        </div>
+    </div>
+    <!--用户评价-->
+    <div aria-labelledby="disabled-tab" class="tab-pane fade" id="disabled-tab-pane" role="tabpanel" style="background-color: #f5f5f5;padding: 5px 0"
+         tabindex="0">
+        <div class="row">
+            <div class="col-sm-12 col-xs-12 col-md-4" style="padding: 10px 15px">
+                <div style="width: 100%">
+                    <div style="width: 100%;display: flex;">
+                        <div style="width: 25%">
+                            <img alt=""
+                                 src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202310251928_35fb2880108e9aa56fdcf7f894249f26.png?w=800&h=800"
+                                 style="width: 100%" id="shop_name_9">
+                        </div>
+                        <div id="show_title_buyer" style="width: 75%;display: flex;flex-wrap: wrap;align-items: center">
+                            <div>
+                                <h4 style="font-size: 20px" id="shop_name_6">手机名称</h4>
+                                <div>
+                                    <span>好评度:</span>
+                                    <span id="satisfy_per"></span>
+                                    <span>%</span>
+                                </div>
+                                <p><span id="buy_num"></span>人购买</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="width: 100%;">
+                        <div style="display: flex;justify-content: space-between">
+                            <div>机主评分</div>
+                            <div>查看全部</div>
+                        </div>
+                        <div class="tab-pane__" style="display: flex;padding: 15px 0">
+                            <div class="text-center" style="width: 40%">
+                                <div>
+                                    <h3 class="speak_num" id="speak_num_">8.2</h3>
+                                    <p><span id="speak_star" style="color: #ff6700"></span><span id="speak_star_"></span></p>
+                                    <p><span id="speak_num"></span>位机主评论</p>
+                                </div>
+                            </div>
+                            <div style="width: 60%">
+                                <div style="display: flex;justify-content: center;align-items: center">
+                                    <div style="width: 15%">五星</div>
+                                    <div style="width: 75%">
+                                        <div aria-label="Basic example" aria-valuemax="100" aria-valuemin="0"
+                                             aria-valuenow="75" class="progress" role="progressbar">
+                                            <div class="progress-bar" id="five"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="display: flex;justify-content: center;align-items: center">
+                                    <div style="width: 15%">四星</div>
+                                    <div style="width: 75%">
+                                        <div aria-label="Basic example" aria-valuemax="100" aria-valuemin="0"
+                                             aria-valuenow="75" class="progress" role="progressbar">
+                                            <div class="progress-bar" id="four"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="display: flex;justify-content: center;align-items: center">
+                                    <div style="width: 15%">三星</div>
+                                    <div style="width: 75%">
+                                        <div aria-label="Basic example" aria-valuemax="100" aria-valuemin="0"
+                                             aria-valuenow="75" class="progress" role="progressbar">
+                                            <div class="progress-bar" id="three"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="display: flex;justify-content: center;align-items: center">
+                                    <div style="width: 15%">二星</div>
+                                    <div style="width: 75%">
+                                        <div aria-label="Basic example" aria-valuemax="100" aria-valuemin="0"
+                                             aria-valuenow="75" class="progress" role="progressbar">
+                                            <div class="progress-bar" id="two"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="display: flex;justify-content: center;align-items: center">
+                                    <div style="width: 15%">一星</div>
+                                    <div style="width: 75%">
+                                        <div aria-label="Basic example" aria-valuemax="100" aria-valuemin="0"
+                                             aria-valuenow="75" class="progress" role="progressbar">
+                                            <div class="progress-bar" id="one"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="width: 100%;display: flex;justify-content: flex-end">
+                            <span style="display: block;width: 10%;height: 30px;cursor: pointer">评价</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-xs-12 col-md-8" style="" id="example">
+                <div id="content_shop_content">
+
+                </div>
+                <nav aria-label="Page navigation example" style="padding: 10px 0">
+                    <ul class="pagination">
+                        <li class="page-item"><button class="page-link" href="#" id="click_last_" onclick="click_last()">上一页</button></li>
+                        <li class="page-item"><button class="page-link" href="#" id="click_next_" onclick="click_next()">下一页</button></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--下面内容是固定的-->
+<div style="margin-top: 1vh">
+    <div class="footer">
+        <div class="server">
+            <ul style="width: 80%;margin: 0 auto">
+                <li class="first">
+                    <em class="iconfont-tool"></em>
+                    预约维修服务
+                </li>
+                <li>
+                    <em class="iconfont-circle-7"></em>
+                    7天无理由退货
+                </li>
+                <li>
+                    <em class="iconfont-circle-15"></em>
+                    15天无理由退货
+                </li>
+                <li>
+                    <em class="iconfont-gift"></em>
+                    满69包邮
+                </li>
+                <li>
+                    <em class="iconfont-location"></em>
+                    1100余家售后网点
+                </li>
+            </ul>
+        </div>
+
+        <div class="about">
+            <div>
+                <ul>
+                    <li>选购指南</li>
+                    <li><a href="">手机</a></li>
+                    <li><a href="">平板</a></li>
+                    <li><a href="">笔记本</a></li>
+                    <li><a href="">穿戴</a></li>
+                    <li><a href="">耳机</a></li>
+                    <li><a href="">家电</a></li>
+                </ul>
+                <ul>
+                    <li>服务中心</li>
+                    <li><a href="">申请售后</a></li>
+                    <li><a href="">售后政策</a></li>
+                    <li><a href="">维修价格查询</a></li>
+                    <li><a href="">订单查询</a></li>
+                </ul>
+                <ul>
+                    <li>线下门店</li>
+                    <li><a href="">小米之家</a></li>
+                    <li><a href="">服务网点</a></li>
+                    <li><a href="">授权体验店/专区</a></li>
+                </ul>
+                <ul>
+                    <li>关于小米</li>
+                    <li><a href="">了解小米</a></li>
+                    <li><a href="">加入小米</a></li>
+                    <li><a href="">投资者关系</a></li>
+                    <li><a href="">可持续发展</a></li>
+                    <li><a href="">廉洁举报</a></li>
+                </ul>
+                <ul>
+                    <li>关注我们</li>
+                    <li><a href="">新浪微博</a></li>
+                    <li><a href="">官方微信</a></li>
+                    <li><a href="">联系我们</a></li>
+                    <li><a href="">公益基金会</a></li>
+                </ul>
+            </div>
+            <div>
+                <div class="phone_">
+                    <h3 style="color: #ff6700">400-100-5678</h3>
+                    <p>8:00-18:00（仅收市话费）</p>
+                    <div class="btn btn-light text-center"
+                         style="width:50%;margin: 0 auto;display: flex;justify-content: center">
+                        <em class="iconfont-message2"></em>
+                        <p>人工客服</p>
+                        <div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div style="width: 100%;margin: 0 auto;background-color: #fafafa;padding: 10px 0">
+    <div class="info-text row" style="margin: 0">
+        <div class="info_content col-md-10 text-center">
+            <p class="sites"><a href="//www.mi.com/shop" rel="nofollow" target="_blank">小米商城</a> <span
+                    class="sep">|</span> <a href="//hyperos.mi.com/" rel="nofollow" target="_blank">小米澎湃OS</a> <span
+                    class="sep">|</span> <a href="//home.mi.com/index.html" rel="nofollow" target="_blank">米家</a>
+                <span class="sep">|</span> <a href="http://www.miliao.com/" rel="nofollow" target="_blank">米聊</a>
+                <span class="sep">|</span> <a href="//www.duokan.com/" rel="nofollow" target="_blank">多看</a> <span
+                        class="sep">|</span> <a href="//game.xiaomi.com/" rel="nofollow" target="_blank">游戏</a> <span
+                        class="sep">|</span> <a href="//www.mi.com/music" rel="nofollow" target="_blank">音乐</a> <span
+                        class="sep">|</span> <a href="//b.mi.com/?client_id=180100031058&amp;masid=17409.0358"
+                                                rel="nofollow"
+                                                target="_blank">政企服务</a> <span class="sep">|</span> <a
+                        href="//xiaomi.tmall.com/" rel="nofollow" target="_blank">小米天猫店</a> <span
+                        class="sep">|</span> <a href="//privacy.mi.com/all/zh_CN/" rel="nofollow" target="_blank">小米集团隐私政策</a>
+                <span class="sep">|</span> <a href="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/f516fe9e2c01.html"
+                                              rel="nofollow"
+                                              target="_blank">小米公司儿童信息保护规则</a> <span class="sep">|</span> <a
+                        href="//m.mi.com/support/module?id=63&amp;headless=1" rel="nofollow"
+                        target="_blank">小米商城隐私政策</a> <span class="sep">|</span> <a
+                        href="//www.mi.com/aptitude/list?id=62"
+                        rel="nofollow"
+                        target="_blank">小米商城用户协议</a>
+                <span class="sep">|</span> <a href="//static.mi.com/feedback/" rel="nofollow"
+                                              target="_blank">问题反馈</a> <span class="sep">|</span> <a
+                        class="J_siteGlobalRegion"
+                        href="javascript:void(0);"
+                        rel="nofollow">Select
+                    Location</a></p>
+            <div class="logo" style="margin:10px auto">
+                <img alt="" src="https://cdn.cnbj1.fds.api.mi-img.com/mi.com-assets/shop/img/logo-mi2.png">
+            </div>
+            <p class="sites" style="margin: 5px 0"><a href="http://www.mi.com/beihu" rel="nofollow" target="_blank">北京互联网法院法律服务工作站</a>
+                <span class="sep">|</span> <a href="http://www.cca.org.cn/" rel="nofollow"
+                                              target="_blank">中国消费者协会</a> <span class="sep">|</span> <a
+                        href="http://www.bj315.org/" rel="nofollow" target="_blank">北京市消费者协会</a></p>
+            <p>
+                ©
+                <a href="" title="mi.com">mi.com</a> 京ICP证110507号
+                <a href="http://beian.miit.gov.cn/" rel="nofollow" target="_blank">京ICP备10046444号</a> <a
+                    href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802020134" rel="nofollow"
+                    target="_blank">京公网安备11010802020134号</a> <a href="//www.mi.com/culture-license/"
+                                                                      target="_blank">京网文[2023]0169-004号</a> <br> <a
+                    href="//www.mi.com/medical/record/" target="_blank">（京）网械平台备字（2018）第00005号</a> <a
+                    href="//www.mi.com/medical/qualification/" target="_blank">互联网药品信息服务资格证
+                (京)-非经营性-2014-0090</a> <a href="//www.mi.com/business-license/" target="_blank">营业执照</a> <a
+                    href="//www.mi.com/medical/list/" target="_blank">医疗器械质量公告</a> <br> <a
+                    href="https://cdn.cnbj1.fds.api.mi-img.com/staticsfile/pc/5f93056c-bc30-401e-9526-66839114ffb9.png"
+                    target="_blank">增值电信业务经营许可证编号：京B2-20180851</a>&nbsp;网络食品经营备案 京食药网食备202010048
+                &nbsp;
+                <a href="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c6859168166651511897f54fa1047fe3.png"
+                   target="_blank">食品经营许可证</a>&nbsp;新出发京批字第直220280号
+                <br>违法和不良信息举报电话：171-5104-4404&nbsp;<a href="https://www.mi.com/intellectual" target="_blank">知识产权侵权投诉</a>&nbsp;本网站所列数据，除特殊说明，所有数据均出自我司实验室测试
+            </p>
+        </div>
+    </div>
+
+    <div class="call">
+        <span>让全球每个人都可以享受科技的乐趣</span>
+    </div>
+    <div class="call">
+        <span>本网站为模仿小米官网，仅供学习参考，请勿用于商业用途。</span>
+    </div>
+</div>
+<script src="node_modules/axios/dist/axios.js"></script>
+<script src="js/product.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, user-scalable=no" name="viewport">
+    <title>首页</title>
+    <link href="https://cdn.cnbj1.fds.api.mi-img.com/mi.com-assets/shop/img/logo-mi2.png" rel="icon">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="js/bootstrap.bundle.js"></script>
+    <!--    <script src="js/bootstrap.min.js"></script>-->
+    <link href="css/home.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
+    <style>
+        .blur-effect {
+            /* 设置背景颜色 */
+            /*background-color: #ffffff;*/
+            /* 使用backdrop-filter属性添加模糊效果 */
+            backdrop-filter: blur(13px);
+            /* 其他样式 */
+            /*padding: 20px;*/
+            /*border-radius: 8px;*/
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .info-text {
+            font-size: 12px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .logo {
+            width: 5%;
+            margin-right: 10px;
+        }
+
+        .logo img {
+            width: 100%;
+        }
+
+        .info_content {
+            color: rgb(128, 128, 128);
+        }
+
+        .info_content a {
+            color: rgb(128, 128, 128);
+        }
+
+        .phone_ > * {
+            margin: 5px 0;
+        }
+
+        .nav-item .nav-link {
+            display: block;
+            /*box-sizing: border-box;*/
+            padding: 2px 10px;
+            margin: 2px;
+            border-radius: 3px;
+        }
+
+        .nav-item .nav-link:hover {
+            background-color: rgba(128, 128, 128, 0.2);
+        }
+
+        .nav-item .nav-link:hover span {
+            color: #ff6900
+        }
+
+        .nav-item span {
+            margin: 2px 5px;
+        }
+
+        .call {
+            text-align: center;
+            opacity: 0.4;
+            font-size: 20px;
+            user-select: none;
+            margin: 10px 0;
+        }
+        .row{
+            margin-left: 0;
+        }
+        @media (max-width: 768px) {
+            #pills-tab{
+                display: block;
+            }
+
+            .nav-item{
+                display: flex;
+                justify-content: center;
+            }
+        }
+        .card_{
+            transition: all .2s linear;
+        }
+
+        .card_:hover{
+            box-shadow: 0 0 10px rgba(0,0,0,.2);
+            transform: translateY(-5px);
+            transition: all .2s linear;
+        }
+        .card-text{
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 4;
+            height: 84px;
+            margin: 10px 0;
+
+        }
+    </style>
+    <!--    <script src="js/popper.min.js"></script>-->
+</head>
+<body style="min-width: 0">
+<nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top blur-effect">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="" style="">
+            <img alt="" src="https://cdn.cnbj1.fds.api.mi-img.com/mi.com-assets/shop/img/logo-mi2.png"
+                 style="height: 38px">
+        </a>
+        <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
+                data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse" type="button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="nav nav-pills me-auto mb-2 mb-lg-0" id="pills-tab" style="margin: 0 auto" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button aria-controls="pills-home" aria-selected="true" class="nav-link active"
+                            data-bs-target="#pills-home" data-bs-toggle="pill" id="pills-home-tab" role="tab"
+                            type="button">
+                        <span>小米官网</span>
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button aria-controls="pills-profile" aria-selected="false" class="nav-link"
+                            data-bs-target="#pills-profile" data-bs-toggle="pill" id="pills-profile-tab" role="tab"
+                            type="button">
+                        <span>小米商城</span>
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button aria-controls="pills-contact" aria-selected="false" class="nav-link"
+                            data-bs-target="#pills-contact" data-bs-toggle="pill" id="pills-contact-tab" role="tab"
+                            type="button">
+                        <span>小米影像</span>
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><span>小米澎湃OS</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><span>IOT</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><span>云服务</span></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
+                        <span class="dropdown-toggle">小爱开放平台</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Separated link</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <form class="d-flex" role="search">
+                <input aria-label="Search" class="form-control me-2" placeholder="请输入搜索内容" type="search" id="search_content">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="search()">
+                    搜索
+                </button>
+            </form>
+        </div>
+    </div>
+</nav>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">搜索结果</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>这里用的是接口请求</p>
+                <p>你要搜索的内容为:<span id="modal_content_search" style="margin: 0 10px"></span></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="tab-content container-fluid" id="pills-tabContent" style="margin-top: 70px">
+    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
+        <div class="content">
+            <div class="row">
+                <div class="col-md-12 col-xs-12">
+                    <div>
+                        <div class="carousel slide" data-bs-interval="2000" data-bs-ride="carousel"
+                             id="carouselExampleIndicators">
+                            <div class="carousel-indicators" id="show_button">
+<!--                                <button aria-current="true" aria-label="Slide 1" class="active"-->
+<!--                                        data-bs-slide-to="0" data-bs-target="#carouselExampleIndicators" type="button"></button>-->
+<!--                                <button aria-label="Slide 2" data-bs-slide-to="1" data-bs-target="#carouselExampleIndicators"-->
+<!--                                        type="button"></button>-->
+<!--                                <button aria-label="Slide 3" data-bs-slide-to="2" data-bs-target="#carouselExampleIndicators"-->
+<!--                                        type="button"></button>-->
+                            </div>
+                            <div class="carousel-inner" id="show">
+<!--                                <div class="carousel-item active">-->
+<!--                                    <a href="https://www.mi.com">-->
+<!--                                        <img alt="..." class="d-block w-100" src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/040ed92b3a57bf23cbb3953a0519cb36.jpg?thumb=1&w=2452&h=920&f=webp&q=90">-->
+<!--                                    </a>-->
+<!--                                </div>-->
+                            </div>
+                            <button class="carousel-control-prev" data-bs-slide="prev" data-bs-target="#carouselExampleIndicators"
+                                    type="button">
+                                <span aria-hidden="true" class="carousel-control-prev-icon"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" data-bs-slide="next" data-bs-target="#carouselExampleIndicators"
+                                    type="button">
+                                <span aria-hidden="true" class="carousel-control-next-icon"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                    </div><!--这里是轮播图-->
+                    <div id="image-container" style="width:100%"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
+        <div style="width: 100%;padding: 10px 0;margin-top: 10px">
+            <ul class="nav nav-pills me-auto mb-2" id="myTab" role="tablist" style="display: flex;justify-content: center">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true"><span>Xiaomi手机</span></button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false"><span>Redmi手机</span></button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false"><span>电视</span></button>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+                    <!--首先使用一个轮播图,这里做圆角边框-->
+                    <div style="width: 80%; margin: 0 auto;border-radius: 8px;overflow: hidden;">
+                        <div class="carousel slide" data-bs-interval="2000" data-bs-ride="carousel"
+                             id="carouselExampleIndicators_">
+                            <div class="carousel-indicators">
+                                <button aria-current="true" aria-label="Slide 1" class="active"
+                                        data-bs-slide-to="0" data-bs-target="#carouselExampleIndicators_" type="button"></button>
+                                <button aria-current="true" aria-label="Slide 2"
+                                        data-bs-slide-to="1" data-bs-target="#carouselExampleIndicators_" type="button"></button>
+                            </div>
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <a href="http://localhost:63343/bootstrap/product.html?product=10050057">
+                                        <img alt="..." class="d-block w-100" src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/040ed92b3a57bf23cbb3953a0519cb36.jpg?thumb=1&w=2452&h=920&f=webp&q=90">
+                                    </a>
+                                </div>
+                                <div class="carousel-item">
+                                    <a href="http://localhost:63343/bootstrap/product.html?product=10050057">
+                                        <img alt="..." class="d-block w-100" src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/040ed92b3a57bf23cbb3953a0519cb36.jpg?thumb=1&w=2452&h=920&f=webp&q=90">
+                                    </a>
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" data-bs-slide="prev" data-bs-target="#carouselExampleIndicators_"
+                                    type="button">
+                                <span aria-hidden="true" class="carousel-control-prev-icon"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" data-bs-slide="next" data-bs-target="#carouselExampleIndicators_"
+                                    type="button">
+                                <span aria-hidden="true" class="carousel-control-next-icon"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                    </div><!--这里是轮播图-->
+
+                    <div style="width: 80%; margin: 10px auto;overflow: hidden;padding: 10px 0">
+                        <h4>热卖推荐</h4>
+                        <div style="width: 100%;overflow: hidden;padding: 10px 0;display: flex;flex-wrap: wrap;justify-content: space-between" id="xiaomi">
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+                    <!--首先使用一个轮播图,这里做圆角边框-->
+                    <div style="width: 80%; margin: 0 auto;border-radius: 8px;overflow: hidden;">
+                        <div class="carousel slide" data-bs-interval="2000" data-bs-ride="carousel"
+                             id="carouselExampleIndicators__">
+                            <div class="carousel-indicators">
+                                <button aria-current="true" aria-label="Slide 1" class="active"
+                                        data-bs-slide-to="0" data-bs-target="#carouselExampleIndicators__" type="button"></button>
+                                <button aria-current="true" aria-label="Slide 2"
+                                        data-bs-slide-to="1" data-bs-target="#carouselExampleIndicators__" type="button"></button>
+                            </div>
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <a href="http://localhost:63343/bootstrap/product.html?product=10050057">
+                                        <img alt="..." class="d-block w-100" src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/040ed92b3a57bf23cbb3953a0519cb36.jpg?thumb=1&w=2452&h=920&f=webp&q=90">
+                                    </a>
+                                </div>
+                                <div class="carousel-item">
+                                    <a href="http://localhost:63343/bootstrap/product.html?product=10050057">
+                                        <img alt="..." class="d-block w-100" src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/040ed92b3a57bf23cbb3953a0519cb36.jpg?thumb=1&w=2452&h=920&f=webp&q=90">
+                                    </a>
+                                </div>
+
+                            </div>
+                            <button class="carousel-control-prev" data-bs-slide="prev" data-bs-target="#carouselExampleIndicators__"
+                                    type="button">
+                                <span aria-hidden="true" class="carousel-control-prev-icon"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" data-bs-slide="next" data-bs-target="#carouselExampleIndicators__"
+                                    type="button">
+                                <span aria-hidden="true" class="carousel-control-next-icon"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                    </div><!--这里是轮播图-->
+
+                    <div style="width: 80%; margin: 10px auto;overflow: hidden;padding: 10px 0">
+                        <h4>热卖推荐</h4>
+                        <div style="width: 100%;overflow: hidden;padding: 10px 0;display: flex;flex-wrap: wrap;justify-content: space-between" id="redmi">
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
+                    <!--首先使用一个轮播图,这里做圆角边框-->
+                    <div style="width: 80%; margin: 0 auto;border-radius: 8px;overflow: hidden;">
+                        <div class="carousel slide" data-bs-interval="2000" data-bs-ride="carousel"
+                             id="carouselExampleIndicators___">
+                            <div class="carousel-indicators">
+                                <button aria-current="true" aria-label="Slide 1" class="active"
+                                        data-bs-slide-to="0" data-bs-target="#carouselExampleIndicators___" type="button"></button>
+                            </div>
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <a href="https://www.mi.com">
+                                        <img alt="..." class="d-block w-100" src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/040ed92b3a57bf23cbb3953a0519cb36.jpg?thumb=1&w=2452&h=920&f=webp&q=90">
+                                    </a>
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" data-bs-slide="prev" data-bs-target="#carouselExampleIndicators___"
+                                    type="button">
+                                <span aria-hidden="true" class="carousel-control-prev-icon"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" data-bs-slide="next" data-bs-target="#carouselExampleIndicators___"
+                                    type="button">
+                                <span aria-hidden="true" class="carousel-control-next-icon"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                    </div><!--这里是轮播图-->
+
+                    <div style="width: 80%; margin: 10px auto;overflow: hidden;padding: 10px 0">
+                        <h4>热卖推荐</h4>
+                        <div style="width: 100%;overflow: hidden;padding: 10px 0;display: flex;flex-wrap: wrap;justify-content: space-between" id="tv">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab" tabindex="0">...</div>
+</div>
+<div style="width: 100%;margin: 10px auto">
+    <div class="info-text row">
+        <div class="info_content col-md-10 text-center">
+            <p class="sites"><a href="//www.mi.com/shop" rel="nofollow" target="_blank">小米商城</a> <span
+                    class="sep">|</span> <a href="//hyperos.mi.com/" rel="nofollow" target="_blank">小米澎湃OS</a> <span
+                    class="sep">|</span> <a href="//home.mi.com/index.html" rel="nofollow" target="_blank">米家</a>
+                <span class="sep">|</span> <a href="http://www.miliao.com/" rel="nofollow" target="_blank">米聊</a>
+                <span class="sep">|</span> <a href="//www.duokan.com/" rel="nofollow" target="_blank">多看</a> <span
+                        class="sep">|</span> <a href="//game.xiaomi.com/" rel="nofollow" target="_blank">游戏</a> <span
+                        class="sep">|</span> <a href="//www.mi.com/music" rel="nofollow" target="_blank">音乐</a> <span
+                        class="sep">|</span> <a href="//b.mi.com/?client_id=180100031058&amp;masid=17409.0358"
+                                                rel="nofollow"
+                                                target="_blank">政企服务</a> <span class="sep">|</span> <a
+                        href="//xiaomi.tmall.com/" rel="nofollow" target="_blank">小米天猫店</a> <span
+                        class="sep">|</span> <a href="//privacy.mi.com/all/zh_CN/" rel="nofollow" target="_blank">小米集团隐私政策</a>
+                <span class="sep">|</span> <a href="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/f516fe9e2c01.html"
+                                              rel="nofollow"
+                                              target="_blank">小米公司儿童信息保护规则</a> <span class="sep">|</span> <a
+                        href="//m.mi.com/support/module?id=63&amp;headless=1" rel="nofollow"
+                        target="_blank">小米商城隐私政策</a> <span class="sep">|</span> <a href="//www.mi.com/aptitude/list?id=62"
+                                                                                           rel="nofollow"
+                                                                                           target="_blank">小米商城用户协议</a>
+                <span class="sep">|</span> <a href="//static.mi.com/feedback/" rel="nofollow"
+                                              target="_blank">问题反馈</a> <span class="sep">|</span> <a class="J_siteGlobalRegion"
+                                                                                                         href="javascript:void(0);"
+                                                                                                         rel="nofollow">Select
+                    Location</a></p>
+            <div class="logo" style="margin:10px auto">
+                <img alt="" src="https://cdn.cnbj1.fds.api.mi-img.com/mi.com-assets/shop/img/logo-mi2.png">
+            </div>
+            <p class="sites" style="margin: 5px 0"><a href="http://www.mi.com/beihu" rel="nofollow" target="_blank">北京互联网法院法律服务工作站</a>
+                <span class="sep">|</span> <a href="http://www.cca.org.cn/" rel="nofollow"
+                                              target="_blank">中国消费者协会</a> <span class="sep">|</span> <a
+                        href="http://www.bj315.org/" rel="nofollow" target="_blank">北京市消费者协会</a></p>
+            <p>
+                ©
+                <a href="" title="mi.com">mi.com</a> 京ICP证110507号
+                <a href="http://beian.miit.gov.cn/" rel="nofollow" target="_blank">京ICP备10046444号</a> <a
+                    href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802020134" rel="nofollow"
+                    target="_blank">京公网安备11010802020134号</a> <a href="//www.mi.com/culture-license/"
+                                                                      target="_blank">京网文[2023]0169-004号</a> <br> <a
+                    href="//www.mi.com/medical/record/" target="_blank">（京）网械平台备字（2018）第00005号</a> <a
+                    href="//www.mi.com/medical/qualification/" target="_blank">互联网药品信息服务资格证
+                (京)-非经营性-2014-0090</a> <a href="//www.mi.com/business-license/" target="_blank">营业执照</a> <a
+                    href="//www.mi.com/medical/list/" target="_blank">医疗器械质量公告</a> <br> <a
+                    href="https://cdn.cnbj1.fds.api.mi-img.com/staticsfile/pc/5f93056c-bc30-401e-9526-66839114ffb9.png"
+                    target="_blank">增值电信业务经营许可证编号：京B2-20180851</a>&nbsp;网络食品经营备案 京食药网食备202010048
+                &nbsp;
+                <a href="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c6859168166651511897f54fa1047fe3.png"
+                   target="_blank">食品经营许可证</a>&nbsp;新出发京批字第直220280号
+                <br>违法和不良信息举报电话：171-5104-4404&nbsp;<a href="https://www.mi.com/intellectual" target="_blank">知识产权侵权投诉</a>&nbsp;本网站所列数据，除特殊说明，所有数据均出自我司实验室测试
+            </p>
+        </div>
+    </div>
+
+    <div class="call">
+        <span>让全球每个人都可以享受科技的乐趣</span>
+    </div>
+
+    <div class="call">
+        <span>本网站为模仿小米官网，仅供学习参考，请勿用于商业用途。</span>
+    </div>
+</div>
+<script src="js/index.js"></script>
+</body>
+</html>
